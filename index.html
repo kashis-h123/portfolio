@@ -1,474 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kashish Sandeep Shimpi | Frontend Developer</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    :root{
-      --p1:#ACE1AF;
-      --p2:#B0EBB4;
-      --p3:#BFF6C3;
-      --p4:#E0FBE2;
-
-      --bg:#0d1a0f;
-      --text:#E0FBE2;
-      --muted:rgba(191,246,195,0.70);
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      font-family:'Inter',sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      overflow-x:hidden;
-    }
-
-    body::before{
-      content:'';
-      position:fixed;
-      inset:0;
-      background:
-      radial-gradient(circle at top left, rgba(172,225,175,0.12), transparent 35%),
-      radial-gradient(circle at bottom right, rgba(176,235,180,0.10), transparent 35%);
-      z-index:-2;
-    }
-
-    .blob{
-      position:fixed;
-      border-radius:50%;
-      filter:blur(120px);
-      opacity:0.15;
-      z-index:-1;
-    }
-
-    .blob1{
-      width:400px;
-      height:400px;
-      background:var(--p1);
-      top:-100px;
-      left:-100px;
-    }
-
-    .blob2{
-      width:350px;
-      height:350px;
-      background:var(--p2);
-      bottom:-100px;
-      right:-100px;
-    }
-
-    nav{
-      position:fixed;
-      top:20px;
-      left:50%;
-      transform:translateX(-50%);
-      width:90%;
-      max-width:1200px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:18px 30px;
-      background:rgba(172,225,175,0.08);
-      border:1px solid rgba(224,251,226,0.10);
-      backdrop-filter:blur(20px);
-      border-radius:24px;
-      z-index:1000;
-    }
-
-    .logo{
-      font-family:'Syne',sans-serif;
-      font-size:1.4rem;
-      font-weight:800;
-      background:linear-gradient(135deg,var(--p1),var(--p4));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-
-    nav ul{
-      display:flex;
-      list-style:none;
-      gap:25px;
-    }
-
-    nav ul a{
-      color:var(--muted);
-      text-decoration:none;
-      transition:0.3s;
-    }
-
-    nav ul a:hover{
-      color:var(--p4);
-    }
-
-    section{
-      padding:120px 8%;
-    }
-
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:60px;
-      position:relative;
-    }
-
-    .hero-bg{
-      position:absolute;
-      font-size:18vw;
-      font-weight:800;
-      color:rgba(255,255,255,0.03);
-      left:50%;
-      top:50%;
-      transform:translate(-50%,-50%);
-      font-family:'Syne',sans-serif;
-      user-select:none;
-    }
-
-    .hero-left{
-      flex:1;
-      z-index:2;
-    }
-
-    .hero-tag{
-      display:inline-block;
-      padding:10px 18px;
-      border-radius:50px;
-      border:1px solid rgba(255,255,255,0.10);
-      margin-bottom:25px;
-      color:var(--p3);
-    }
-
-    .hero h1{
-      font-family:'Syne',sans-serif;
-      font-size:clamp(3rem,7vw,6rem);
-      line-height:1;
-      margin-bottom:25px;
-    }
-
-    .hero h1 span{
-      background:linear-gradient(135deg,var(--p1),var(--p4));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-
-    .hero p{
-      max-width:650px;
-      line-height:1.8;
-      color:var(--muted);
-      margin-bottom:40px;
-    }
-
-    .hero-buttons{
-      display:flex;
-      gap:18px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      padding:15px 28px;
-      border-radius:50px;
-      text-decoration:none;
-      font-weight:600;
-      transition:0.3s;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-    }
-
-    .btn-primary{
-      background:linear-gradient(135deg,var(--p1),var(--p2));
-      color:#0d1a0f;
-    }
-
-    .btn-outline{
-      border:1px solid rgba(255,255,255,0.15);
-      color:var(--p4);
-    }
-
-    .btn:hover{
-      transform:translateY(-4px);
-    }
-
-    .hero-right{
-      flex:1;
-      display:flex;
-      justify-content:center;
-    }
-
-    .profile-card{
-      width:360px;
-      background:rgba(172,225,175,0.08);
-      border:1px solid rgba(255,255,255,0.10);
-      border-radius:28px;
-      padding:28px;
-      backdrop-filter:blur(20px);
-    }
-
-    .profile-image{
-      width:100%;
-      height:320px;
-      overflow:hidden;
-      border-radius:24px;
-      margin-bottom:20px;
-    }
-
-    .profile-image img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-
-    .profile-card h3{
-      margin-bottom:10px;
-    }
-
-    .profile-card p{
-      color:var(--muted);
-      line-height:1.7;
-    }
-
-    .section-header{
-      margin-bottom:60px;
-    }
-
-    .section-tag{
-      color:var(--p3);
-      text-transform:uppercase;
-      letter-spacing:2px;
-      margin-bottom:15px;
-      display:inline-block;
-    }
-
-    .section-header h2{
-      font-size:3rem;
-      font-family:'Syne',sans-serif;
-    }
-
-    .section-header h2 span{
-      background:linear-gradient(135deg,var(--p1),var(--p4));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-
-    .services-grid,
-    .skills-grid,
-    .cert-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:25px;
-    }
-
-    .service-card,
-    .skill-card,
-    .cert-card,
-    .timeline-item,
-    .education-card,
-    .contact-card{
-      background:rgba(172,225,175,0.08);
-      border:1px solid rgba(255,255,255,0.10);
-      border-radius:28px;
-      padding:30px;
-      transition:0.3s;
-    }
-
-    .service-card:hover,
-    .skill-card:hover,
-    .cert-card:hover,
-    .timeline-item:hover{
-      transform:translateY(-6px);
-      border-color:rgba(172,225,175,0.4);
-    }
-
-    .service-card i,
-    .skill-card i,
-    .cert-card i,
-    .contact-item i{
-      font-size:2rem;
-      color:var(--p1);
-      margin-bottom:18px;
-    }
-
-    .service-card p,
-    .timeline-item p,
-    .education-card p,
-    .cert-card p{
-      color:var(--muted);
-      line-height:1.8;
-    }
-
-    .projects-grid{
-      display:grid;
-      gap:30px;
-    }
-
-    .project-card{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:40px;
-      align-items:center;
-      background:rgba(172,225,175,0.08);
-      border:1px solid rgba(255,255,255,0.10);
-      border-radius:30px;
-      padding:40px;
-    }
-
-    .project-image{
-      height:300px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      border-radius:24px;
-      background:linear-gradient(135deg,#0a1a0c,rgba(176,235,180,0.20));
-    }
-
-    .project-image i{
-      font-size:4rem;
-      color:var(--p4);
-    }
-
-    .project-content p{
-      color:var(--muted);
-      line-height:1.8;
-      margin:20px 0;
-    }
-
-    .tech-stack{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-bottom:25px;
-    }
-
-    .tech-stack span{
-      padding:8px 15px;
-      border-radius:50px;
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(255,255,255,0.10);
-      color:var(--p3);
-      font-size:0.85rem;
-    }
-
-    .project-links a{
-      text-decoration:none;
-      color:var(--p4);
-      border:1px solid rgba(255,255,255,0.10);
-      padding:12px 22px;
-      border-radius:50px;
-    }
-
-    .timeline{
-      display:grid;
-      gap:25px;
-    }
-
-    .timeline-item h3{
-      margin-bottom:15px;
-    }
-
-    .skills-grid{
-      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    }
-
-    .skill-card{
-      text-align:center;
-    }
-
-    .skill-icon{
-      margin-bottom:15px;
-    }
-
-    .contact-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:24px;
-      margin-top:35px;
-    }
-
-    .contact-item{
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.08);
-      padding:25px;
-      border-radius:22px;
-    }
-
-    .contact-item a{
-      text-decoration:none;
-      color:var(--muted);
-    }
-
-    footer{
-      text-align:center;
-      padding:40px;
-      border-top:1px solid rgba(255,255,255,0.08);
-      color:var(--muted);
-    }
-
-    .reveal{
-      opacity:0;
-      transform:translateY(40px);
-      transition:1s;
-    }
-
-    .reveal.active{
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    @media(max-width:900px){
-
-      .hero{
-        flex-direction:column;
-        text-align:center;
-        padding-top:140px;
-      }
-
-      .hero-buttons{
-        justify-content:center;
-      }
-
-      .project-card{
-        grid-template-columns:1fr;
-      }
-
-    }
-
-    @media(max-width:700px){
-
-      nav ul{
-        display:none;
-      }
-
-      section{
-        padding:90px 6%;
-      }
-
-      .profile-card{
-        width:100%;
-      }
-
-    }
-
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kashish Sandeep Shimpi | Full Stack Developer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+:root{
+  --p1:#ACE1AF;
+  --p2:#B0EBB4;
+  --p3:#BFF6C3;
+  --p4:#E0FBE2;
+  --bg:#0d1a0f;
+  --text:#E0FBE2;
+  --muted:rgba(191,246,195,0.70);
+}
+
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at top left, rgba(172,225,175,0.12), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(176,235,180,0.10), transparent 35%);
+  z-index:-2;
+}
+
+.blob{position:fixed;border-radius:50%;filter:blur(120px);opacity:0.15;z-index:-1;}
+.blob1{width:400px;height:400px;background:var(--p1);top:-100px;left:-100px;}
+.blob2{width:350px;height:350px;background:var(--p2);bottom:-100px;right:-100px;}
+
+nav{
+  position:fixed;top:20px;left:50%;transform:translateX(-50%);
+  width:90%;max-width:1200px;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 30px;
+  background:rgba(172,225,175,0.08);
+  border:1px solid rgba(224,251,226,0.10);
+  backdrop-filter:blur(20px);
+  border-radius:24px;
+  z-index:1000;
+}
+
+.logo{
+  font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;
+  background:linear-gradient(135deg,var(--p1),var(--p4));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+
+nav ul{display:flex;list-style:none;gap:22px;}
+nav ul a{color:var(--muted);text-decoration:none;transition:0.3s;font-size:0.95rem;}
+nav ul a:hover{color:var(--p4);}
+
+section{padding:120px 8%;}
+
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:space-between;gap:60px;position:relative;}
+
+.hero-bg{
+  position:absolute;font-size:18vw;font-weight:800;
+  color:rgba(255,255,255,0.03);left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  font-family:'Syne',sans-serif;user-select:none;
+}
+
+.hero-left{flex:1;z-index:2;}
+
+.hero-tag{
+  display:inline-block;padding:10px 18px;border-radius:50px;
+  border:1px solid rgba(255,255,255,0.10);margin-bottom:25px;
+  color:var(--p3);font-size:0.9rem;
+}
+
+.hero h1{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(2.6rem,6.5vw,5.2rem);
+  line-height:1.05;margin-bottom:25px;
+}
+
+.hero h1 span{
+  background:linear-gradient(135deg,var(--p1),var(--p4));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+
+.hero p{max-width:650px;line-height:1.8;color:var(--muted);margin-bottom:40px;}
+
+.hero-buttons{display:flex;gap:18px;flex-wrap:wrap;}
+
+.btn{
+  padding:15px 28px;border-radius:50px;text-decoration:none;
+  font-weight:600;transition:0.3s;display:inline-flex;align-items:center;gap:10px;
+  border:none;cursor:pointer;font-family:inherit;font-size:0.95rem;
+}
+
+.btn-primary{background:linear-gradient(135deg,var(--p1),var(--p2));color:#0d1a0f;}
+.btn-outline{border:1px solid rgba(255,255,255,0.15);color:var(--p4);background:transparent;}
+.btn:hover{transform:translateY(-4px);}
+
+.hero-right{flex:1;display:flex;justify-content:center;}
+
+.profile-card{
+  width:360px;background:rgba(172,225,175,0.08);
+  border:1px solid rgba(255,255,255,0.10);border-radius:28px;
+  padding:28px;backdrop-filter:blur(20px);
+}
+
+.profile-image{width:100%;height:320px;overflow:hidden;border-radius:24px;margin-bottom:20px;}
+.profile-image img{width:100%;height:100%;object-fit:cover;}
+.profile-card h3{margin-bottom:10px;}
+.profile-card p{color:var(--muted);line-height:1.7;}
+
+.status-pill{
+  display:flex;align-items:center;gap:8px;margin-top:18px;
+  padding:10px 14px;border-radius:14px;
+  background:rgba(172,225,175,0.10);
+  border:1px solid rgba(172,225,175,0.25);
+  font-size:0.85rem;color:var(--p3);
+}
+.status-dot{width:8px;height:8px;border-radius:50%;background:#7CFC9B;box-shadow:0 0 8px #7CFC9B;}
+
+.section-header{margin-bottom:60px;}
+.section-tag{color:var(--p3);text-transform:uppercase;letter-spacing:2px;margin-bottom:15px;display:inline-block;font-size:0.85rem;}
+.section-header h2{font-size:2.8rem;font-family:'Syne',sans-serif;}
+.section-header h2 span{
+  background:linear-gradient(135deg,var(--p1),var(--p4));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+
+.services-grid,.cert-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;
+}
+
+.service-card,.cert-card,.timeline-item,.education-card,.contact-card{
+  background:rgba(172,225,175,0.08);
+  border:1px solid rgba(255,255,255,0.10);
+  border-radius:28px;padding:30px;transition:0.3s;
+}
+
+.service-card:hover,.cert-card:hover,.timeline-item:hover{
+  transform:translateY(-6px);border-color:rgba(172,225,175,0.4);
+}
+
+.service-card i,.cert-card i,.contact-item i{font-size:1.8rem;color:var(--p1);margin-bottom:18px;}
+.service-card p,.timeline-item p,.education-card p,.cert-card p{color:var(--muted);line-height:1.8;}
+.service-card h3{margin-bottom:12px;}
+
+/* Project filters */
+.filter-bar{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:40px;}
+.filter-btn{
+  padding:10px 20px;border-radius:50px;border:1px solid rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.03);color:var(--muted);cursor:pointer;
+  font-family:inherit;font-size:0.88rem;transition:0.3s;
+}
+.filter-btn:hover{color:var(--p4);border-color:rgba(172,225,175,0.4);}
+.filter-btn.active{
+  background:linear-gradient(135deg,var(--p1),var(--p2));
+  color:#0d1a0f;border-color:transparent;font-weight:600;
+}
+
+.projects-grid{display:grid;gap:30px;}
+
+.project-card{
+  display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;
+  background:rgba(172,225,175,0.08);
+  border:1px solid rgba(255,255,255,0.10);
+  border-radius:30px;padding:40px;
+  transition:0.4s;
+}
+
+.project-card.hidden{display:none;}
+
+.project-image{
+  height:280px;display:flex;justify-content:center;align-items:center;
+  border-radius:24px;background:linear-gradient(135deg,#0a1a0c,rgba(176,235,180,0.20));
+}
+
+.project-image i{font-size:3.6rem;color:var(--p4);}
+
+.project-content .project-label{
+  color:var(--p3);font-size:0.8rem;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;display:block;
+}
+
+.project-content h3{font-family:'Syne',sans-serif;font-size:1.6rem;margin-bottom:6px;}
+.project-content p{color:var(--muted);line-height:1.8;margin:16px 0 20px;}
+
+.tech-stack{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:25px;}
+.tech-stack span{
+  padding:7px 14px;border-radius:50px;background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.10);color:var(--p3);font-size:0.8rem;
+}
+
+.project-links{display:flex;gap:12px;flex-wrap:wrap;}
+.project-links a{
+  text-decoration:none;color:var(--p4);border:1px solid rgba(255,255,255,0.10);
+  padding:11px 20px;border-radius:50px;font-size:0.88rem;transition:0.3s;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.project-links a:hover{border-color:rgba(172,225,175,0.5);background:rgba(172,225,175,0.06);}
+
+.timeline{display:grid;gap:25px;}
+.timeline-item h3{margin-bottom:15px;}
+
+/* Skills proficiency */
+.skills-list{display:grid;gap:22px;max-width:700px;}
+.skill-row{display:flex;flex-direction:column;gap:8px;}
+.skill-row-top{display:flex;justify-content:space-between;align-items:center;}
+.skill-row-top span:first-child{display:flex;align-items:center;gap:10px;font-weight:500;}
+.skill-row-top span:last-child{color:var(--p3);font-size:0.85rem;}
+.skill-bar-track{width:100%;height:8px;border-radius:10px;background:rgba(255,255,255,0.06);overflow:hidden;}
+.skill-bar-fill{
+  height:100%;border-radius:10px;
+  background:linear-gradient(90deg,var(--p1),var(--p3));
+  width:0%;transition:width 1.2s ease;
+}
+
+/* Timeline path */
+.path-timeline{position:relative;max-width:700px;margin-top:20px;}
+.path-timeline::before{
+  content:'';position:absolute;left:19px;top:10px;bottom:10px;
+  width:2px;background:linear-gradient(180deg,var(--p1),transparent);
+}
+.path-item{position:relative;padding-left:60px;margin-bottom:34px;}
+.path-item:last-child{margin-bottom:0;}
+.path-dot{
+  position:absolute;left:10px;top:4px;width:20px;height:20px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--p1);
+  display:flex;align-items:center;justify-content:center;
+}
+.path-dot::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--p1);}
+.path-year{color:var(--p3);font-size:0.85rem;letter-spacing:1px;margin-bottom:4px;display:block;}
+.path-item h4{font-family:'Syne',sans-serif;margin-bottom:6px;}
+.path-item p{color:var(--muted);line-height:1.7;font-size:0.95rem;}
+
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;margin-top:35px;}
+.contact-item{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:25px;border-radius:22px;}
+.contact-item a{text-decoration:none;color:var(--muted);}
+.contact-item h4{margin-bottom:6px;}
+  
+footer{text-align:center;padding:50px 20px;border-top:1px solid rgba(255,255,255,0.08);}
+footer p:first-child{font-family:'Syne',sans-serif;font-size:1.2rem;margin-bottom:10px;}
+footer p{color:var(--muted);}
+
+.reveal{opacity:0;transform:translateY(40px);transition:1s;}
+.reveal.active{opacity:1;transform:translateY(0);}
+
+@media(max-width:900px){
+  .hero{flex-direction:column;text-align:center;padding-top:140px;}
+  .hero-buttons{justify-content:center;}
+  .project-card{grid-template-columns:1fr;}
+  .project-image{height:220px;}
+}
+
+@media(max-width:700px){
+  nav ul{display:none;}
+  section{padding:90px 6%;}
+  .profile-card{width:100%;}
+}
+</style>
 </head>
 
 <body>
@@ -478,173 +281,199 @@
 
 <nav>
   <div class="logo">Kashish</div>
-
   <ul>
     <li><a href="#home">Home</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#experience">Experience</a></li>
-    <li><a href="#business">Business</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
-
 <section class="hero" id="home">
-
   <div class="hero-bg">KASHISH</div>
 
   <div class="hero-left reveal">
+    <div class="hero-tag">Full Stack Developer · Frontend Engineer · AI Enthusiast</div>
 
-    <div class="hero-tag">Frontend Developer</div>
-
-    <h1>
-      Creating Modern <br>
-      <span>Digital Experiences</span>
-    </h1>
+    <h1>Building <span>Full-Stack</span> &amp; AI-Powered Experiences</h1>
 
     <p>
-      Frontend Developer skilled in HTML, CSS, JavaScript, ReactJS, NextJS and UI Design passionate about building responsive and user-friendly web applications. Also interested in Banking Operations, Business Operations and Data Analysis.
+      B.Sc. Computer Science graduate passionate about building modern full-stack web applications with React, Next.js, Django, and AI. Experienced in creating responsive user interfaces, REST APIs, automation tools, and AI-powered solutions. Currently seeking Software Developer and Full Stack Developer opportunities.
     </p>
 
     <div class="hero-buttons">
-
-      <a href="#projects" class="btn btn-primary">
-        <i class="fa-solid fa-eye"></i>
-        View Projects
-      </a>
-
-      <a href="#contact" class="btn btn-outline">
-        <i class="fa-solid fa-paper-plane"></i>
-        Contact Me
-      </a>
-
-      <a href="Kashish_shimpi_resume.docx
-" class="btn btn-outline" download>
-        <i class="fa-solid fa-download"></i>
-        Resume
-      </a>
-
+      <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-eye"></i> View Projects</a>
+      <a href="#contact" class="btn btn-outline"><i class="fa-solid fa-paper-plane"></i> Contact Me</a>
+      <a href="Kashish_shimpi_resume.docx" class="btn btn-outline" download><i class="fa-solid fa-download"></i> Resume</a>
     </div>
-
   </div>
 
   <div class="hero-right">
-
     <div class="profile-card">
-
       <div class="profile-image">
         <img src="bbgg.png" alt="Kashish">
       </div>
-
       <h3>Kashish Sandeep Shimpi</h3>
-
-      <p>
-        Creative and detail-oriented Computer Science graduate focused on frontend development, responsive design, business operations and modern digital experiences.
-      </p>
-
+      <p>Full-stack developer focused on React, Next.js, Django, and AI integration — building responsive, real-world applications end to end.</p>
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        Available for Full Stack Developer roles
+      </div>
     </div>
-
   </div>
-
 </section>
 
 <!-- SERVICES -->
-
 <section id="services">
-
   <div class="section-header reveal">
     <div class="section-tag">Services</div>
     <h2>What I <span>Do</span></h2>
   </div>
 
   <div class="services-grid">
-
+    <div class="service-card reveal">
+      <i class="fa-solid fa-layer-group"></i>
+      <h3>Full Stack Development</h3>
+      <p>End-to-end web apps combining React/Next.js frontends with Django backends.</p>
+    </div>
     <div class="service-card reveal">
       <i class="fa-solid fa-code"></i>
       <h3>Frontend Development</h3>
-      <p>Building responsive and modern websites using ReactJS, NextJS, JavaScript, HTML and CSS.</p>
+      <p>Building responsive, modern interfaces with React, Next.js, JavaScript, HTML and CSS.</p>
     </div>
-
+    <div class="service-card reveal">
+      <i class="fa-solid fa-server"></i>
+      <h3>Backend Development</h3>
+      <p>Building robust APIs and server-side logic with Python and Django REST Framework.</p>
+    </div>
+    <div class="service-card reveal">
+      <i class="fa-solid fa-brain"></i>
+      <h3>AI Integration</h3>
+      <p>Integrating AI models like Gemini and YOLO into practical, user-facing tools.</p>
+    </div>
     <div class="service-card reveal">
       <i class="fa-solid fa-pen-ruler"></i>
       <h3>UI / UX Design</h3>
-      <p>Designing interactive user interfaces focused on user experience and responsiveness.</p>
+      <p>Designing interactive interfaces in Figma focused on usability and responsiveness.</p>
     </div>
-
     <div class="service-card reveal">
-      <i class="fa-solid fa-chart-line"></i>
-      <h3>Business Analysis</h3>
-      <p>Working on business operations, reporting, data analysis and workflow optimization.</p>
+      <i class="fa-solid fa-plug"></i>
+      <h3>REST API Development</h3>
+      <p>Designing and building clean, well-documented REST APIs for web applications.</p>
     </div>
-
   </div>
-
 </section>
 
 <!-- PROJECTS -->
-
 <section id="projects">
-
   <div class="section-header reveal">
     <div class="section-tag">Projects</div>
     <h2>Featured <span>Projects</span></h2>
   </div>
 
+  <div class="filter-bar reveal">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+    <button class="filter-btn" data-filter="frontend">Frontend</button>
+    <button class="filter-btn" data-filter="ai">AI</button>
+    <button class="filter-btn" data-filter="python">Python</button>
+    <button class="filter-btn" data-filter="react">React</button>
+    <button class="filter-btn" data-filter="uiux">UI/UX</button>
+  </div>
+
   <div class="projects-grid">
 
-    <div class="project-card reveal">
-
-      <div class="project-image">
-        <i class="fa-solid fa-robot"></i>
-      </div>
-
+    <div class="project-card reveal" data-tags="fullstack ai python">
+      <div class="project-image"><i class="fa-solid fa-robot"></i></div>
       <div class="project-content">
-
+        <span class="project-label">01 · AI Testing Platform</span>
         <h3>TestWise</h3>
-
-        <p>
-          AI-based software UI testing platform developed for automated UI testing, report generation and usability analysis.
-        </p>
-
+        <p>An AI-powered platform that automates website testing using Playwright and DOM analysis — detects broken links and UI inconsistencies, then generates AI-powered test cases and detailed reports.</p>
         <div class="tech-stack">
-          <span>AI</span>
-          <span>Automation</span>
-          <span>Testing</span>
-          <span>UI Design</span>
+          <span>Django</span><span>Python</span><span>Playwright</span><span>BeautifulSoup</span><span>Gemini AI</span>
         </div>
-
         <div class="project-links">
-          <a href="https://github.com/kashis-h123" target="_blank">GitHub</a>
+          <a href="https://github.com/kashis-h123" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
         </div>
-
       </div>
+    </div>
 
+    <div class="project-card reveal" data-tags="ai python">
+      <div class="project-image"><i class="fa-solid fa-eye"></i></div>
+      <div class="project-content">
+        <span class="project-label">02 · Computer Vision</span>
+        <h3>RealScan: Real-time object and sound detection system.</h3>
+        <p>A desktop application that detects real-world objects using YOLO and OpenCV while recognizing voice commands through Speech Recognition, for real-time, accessible interaction.</p>
+        <div class="tech-stack">
+          <span>Python</span><span>OpenCV</span><span>YOLO</span><span>Speech Recognition</span><span>Tkinter</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/kashis-h123" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-tags="frontend uiux">
+      <div class="project-image"><i class="fa-solid fa-image"></i></div>
+      <div class="project-content">
+        <span class="project-label">03 · Image Editing</span>
+        <h3>Visual Canvas</h3>
+        <p>A responsive image editing web application with an intuitive interface for basic image manipulations, built from a modern Figma UI design.</p>
+        <div class="tech-stack">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Figma</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/kashis-h123" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-tags="frontend">
+      <div class="project-image"><i class="fa-solid fa-utensils"></i></div>
+      <div class="project-content">
+        <span class="project-label">04 · Restaurant Website</span>
+        <h3>PizzaHub</h3>
+        <p>A responsive restaurant landing page featuring an interactive menu, promotional sections, customer testimonials, and modern animations.</p>
+        <div class="tech-stack">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+       
+      </div>
+    </div>
+
+    <div class="project-card reveal" data-tags="frontend react fullstack">
+      <div class="project-image"><i class="fa-solid fa-user"></i></div>
+      <div class="project-content">
+        <span class="project-label">05 · Personal Site</span>
+        <h3>Portfolio Website</h3>
+        <p>A modern, responsive personal portfolio showcasing projects, technical skills, internships and achievements, built with React and Next.js.</p>
+        <div class="tech-stack">
+          <span>React</span><span>Next.js</span><span>HTML</span><span>CSS</span><span>JavaScript</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/kashis-h123" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+        </div>
+      </div>
     </div>
 
   </div>
-
 </section>
 
 <!-- EXPERIENCE -->
-
 <section id="experience">
-
   <div class="section-header reveal">
     <div class="section-tag">Experience</div>
     <h2>Work <span>Experience</span></h2>
   </div>
 
   <div class="timeline">
-
     <div class="timeline-item reveal">
       <h3>Web Developer Intern — Enjay IT Solutions Ltd.</h3>
-
       <p>
         Sep 2025 – Oct 2025 <br><br>
-
         • Developed responsive web applications using HTML, CSS and JavaScript <br>
         • Improved website functionality and user experience <br>
         • Worked on debugging and frontend optimization <br>
@@ -653,114 +482,109 @@
     </div>
 
     <div class="timeline-item reveal">
-      <h3>Python Programming Intern — SIIT</h3>
+      <h3>Business Operations &amp; Data Analysis Intern (Virtual Internship)</h3>
+      <p>
+        Jan 2024 – May 2024 <br><br>
+        • Performed business analysis, reporting and operational problem-solving tasks <br>
+        • Interpreted data and prepared documentation reports <br>
+        • Assisted in understanding client requirements and organizational processes
+      </p>
+    </div>
 
+    <div class="timeline-item reveal">
+      <h3>Python Programming Intern — SIIT</h3>
       <p>
         Apr 2023 – Jul 2023 <br><br>
-
         • Worked on Python programming and logical problem-solving <br>
         • Built small-scale projects and improved coding skills
       </p>
     </div>
-
   </div>
 
-</section>
-
-<!-- BUSINESS -->
-
-<section id="business">
-
-  <div class="section-header reveal">
-    <div class="section-tag">Business & Finance</div>
-    <h2>Banking & <span>Operations</span></h2>
-  </div>
-
-  <div class="timeline">
-
-    <div class="timeline-item reveal">
-
-      <h3>Business Operations & Data Analysis Intern (Virtual Internship)</h3>
-
-      <p>
-        Jan 2024 – May 2024 <br><br>
-
-        • Performed business analysis, reporting and operational problem-solving tasks <br>
-        • Interpreted data and prepared documentation reports <br>
-        • Improved attention to detail, communication and workflow understanding <br>
-        • Assisted in understanding client requirements and organizational processes <br>
-        • Developed interest in Banking Operations and Financial Services
-      </p>
-
+  <div class="path-timeline reveal" style="margin-top:60px;">
+    <div class="path-item">
+      <div class="path-dot"></div>
+      <span class="path-year">2023</span>
+      <h4>Python Programming Internship</h4>
+      <p>SIIT — logical problem-solving and small-scale Python projects.</p>
     </div>
-
+    <div class="path-item">
+      <div class="path-dot"></div>
+      <span class="path-year">2024</span>
+      <h4>Business Operations Internship</h4>
+      <p>Virtual internship in business analysis and data reporting.</p>
+    </div>
+    <div class="path-item">
+      <div class="path-dot"></div>
+      <span class="path-year">2025</span>
+      <h4>Web Development Internship</h4>
+      <p>Enjay IT Solutions Ltd. — responsive web application development.</p>
+    </div>
+    <div class="path-item">
+      <div class="path-dot"></div>
+      <span class="path-year">2026</span>
+      <h4>B.Sc. Computer Science Graduate</h4>
+      <p>Graduated and actively seeking Full Stack / Software Developer roles.</p>
+    </div>
   </div>
-
 </section>
 
 <!-- SKILLS -->
-
 <section id="skills">
-
   <div class="section-header reveal">
     <div class="section-tag">Skills</div>
-    <h2>Tech & <span>Business Skills</span></h2>
+    <h2>Featured <span>Technologies</span></h2>
   </div>
 
-  <div class="skills-grid">
-
-    <div class="skill-card reveal">
-      <div class="skill-icon">
-        <i class="fa-brands fa-react"></i>
-      </div>
-      ReactJS
+  <div class="skills-list">
+    <div class="skill-row reveal">
+      <div class="skill-row-top"><span><i class="fa-brands fa-react"></i> React.js</span><span>90%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
     </div>
-
-    <div class="skill-card reveal">
-      <div class="skill-icon">
-        <i class="fa-brands fa-js"></i>
-      </div>
-      JavaScript
+    <div class="skill-row reveal">
+      <div class="skill-row-top"><span><i class="fa-solid fa-n"></i> Next.js</span><span>85%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
     </div>
-
-    <div class="skill-card reveal">
-      <div class="skill-icon">
-        <i class="fa-brands fa-html5"></i>
-      </div>
-      HTML
+    <div class="skill-row reveal">
+      <div class="skill-row-top"><span><i class="fa-brands fa-js"></i> JavaScript</span><span>90%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
     </div>
-
-    <div class="skill-card reveal">
-      <div class="skill-icon">
-        <i class="fa-brands fa-css3-alt"></i>
-      </div>
-      CSS
+    <div class="skill-row reveal">
+      <div class="skill-row-top"><span><i class="fa-brands fa-python"></i> Python</span><span>85%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
     </div>
-
-    <div class="skill-card reveal">
-      <div class="skill-icon">
-        <i class="fa-brands fa-python"></i>
-      </div>
-      Python
+    <div class="skill-row reveal">
+      <div class="skill-row-top"><span><i class="fa-solid fa-layer-group"></i> Django</span><span>80%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
     </div>
+    <div class="skill-row reveal">
+      <div class="skill-row-top"><span><i class="fa-brands fa-html5"></i> HTML / CSS</span><span>95%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" data-width="95"></div></div>
+    </div>
+    <div class="skill-row reveal">
+      <div class="skill-row-top"><span><i class="fa-brands fa-git-alt"></i> Git / GitHub</span><span>80%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+    </div>
+    <div class="skill-row reveal">
+      <div class="skill-row-top"><span><i class="fa-brands fa-figma"></i> Figma</span><span>85%</span></div>
+      <div class="skill-bar-track"><div class="skill-bar-fill" data-width="85"></div></div>
+    </div>
+  </div>
+</section>
 
 <!-- CONTACT -->
-
 <section id="contact">
-
   <div class="section-header reveal">
     <div class="section-tag">Contact</div>
     <h2>Let's <span>Connect</span></h2>
   </div>
 
   <div class="contact-card reveal">
-
     <p style="color:var(--muted); line-height:1.9;">
-      I'm currently available for internships, frontend developer roles, banking operations opportunities and business analysis roles.
+      I'm currently available for Full Stack Developer, Frontend Developer, and Software Developer roles.
     </p>
 
     <div class="contact-grid">
-
       <div class="contact-item">
         <i class="fa-solid fa-envelope"></i>
         <h4>Email</h4>
@@ -776,47 +600,72 @@
       <div class="contact-item">
         <i class="fa-brands fa-linkedin"></i>
         <h4>LinkedIn</h4>
-        <a href="https://www.linkedin.com/in/kashish-shimpi-64169a295" target="_blank">
-          linkedin.com/in/kashish-shimpi
-        </a>
+        <a href="https://www.linkedin.com/in/kashish-shimpi-64169a295" target="_blank">linkedin.com/in/kashish-shimpi</a>
       </div>
 
       <div class="contact-item">
         <i class="fa-brands fa-github"></i>
         <h4>GitHub</h4>
-        <a href="https://github.com/kashis-h123" target="_blank">
-          github.com/kashis-h123
-        </a>
+        <a href="https://github.com/kashis-h123" target="_blank">github.com/kashis-h123</a>
       </div>
 
+      <div class="contact-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <h4>Location</h4>
+        <span>India</span>
+      </div>
+
+      <div class="contact-item">
+        <i class="fa-solid fa-file-arrow-down"></i>
+        <h4>Resume</h4>
+        <a href="Kashish_shimpi_resume.docx" download>Download Resume</a>
+      </div>
     </div>
-
   </div>
-
 </section>
 
 <footer>
-  Designed & Built by Kashish Sandeep Shimpi © 2026
+  <p>Thanks for visiting! Let's build something amazing together.</p>
+  <p>© 2026 Kashish Sandeep Shimpi</p>
 </footer>
 
 <script>
-
 const observer = new IntersectionObserver((entries) => {
-
   entries.forEach((entry) => {
-
     if(entry.isIntersecting){
       entry.target.classList.add('active');
+      if(entry.target.classList.contains('skill-row')){
+        const fill = entry.target.querySelector('.skill-bar-fill');
+        if(fill) fill.style.width = fill.dataset.width + '%';
+      }
     }
-
   });
-
 },{threshold:0.15});
 
 document.querySelectorAll('.reveal').forEach((el)=>{
   observer.observe(el);
 });
 
+// Project filtering
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+
+    projectCards.forEach(card => {
+      const tags = card.dataset.tags || '';
+      if(filter === 'all' || tags.includes(filter)){
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
 </script>
 
 </body>
