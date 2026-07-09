@@ -14,18 +14,22 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 
 :root{
-  --bg:#0b0c0b;
-  --surface:rgba(255,255,255,0.035);
-  --surface-hover:rgba(255,255,255,0.055);
-  --border:rgba(255,255,255,0.08);
-  --border-hover:rgba(255,255,255,0.16);
-  --text:#EAEAE5;
-  --muted:rgba(234,234,229,0.56);
-  --accent:#9CB89F;
-  --accent-soft:rgba(156,184,159,0.14);
-  --accent-dim:rgba(156,184,159,0.65);
-}
+  --bg:#101412;
+  --surface:rgba(255,255,255,0.08);
+  --surface-hover:rgba(255,255,255,0.12);
 
+  --border:rgba(181,255,194,0.18);
+  --border-hover:rgba(181,255,194,0.35);
+
+  --text:#FFFFFF;
+  --muted:rgba(255,255,255,0.72);
+
+  --accent:#B5FFC2;
+  --accent-soft:rgba(181,255,194,0.18);
+  --accent-dim:#8FE6A2;
+
+  --gradient:linear-gradient(135deg,#B5FFC2,#7EE8A3);
+}
 html{scroll-behavior:smooth;}
 
 body{
@@ -46,12 +50,14 @@ body::before{
   pointer-events:none;
 }
 
-.blob{position:fixed;border-radius:50%;filter:blur(100px);opacity:0.08;z-index:-1;pointer-events:none;}
-.blob1{width:380px;height:380px;background:var(--accent);top:-120px;left:-120px;}
-.blob2{width:320px;height:320px;background:var(--accent);bottom:-120px;right:-120px;}
+.blob{position:fixed;border-radius:50%;opacity:0.08;z-index:-1;pointer-events:none;transform:translateZ(0);}
+.blob1{width:600px;height:600px;top:-200px;left:-200px;background:radial-gradient(circle, var(--accent) 0%, transparent 70%);}
+.blob2{width:520px;height:520px;bottom:-200px;right:-200px;background:radial-gradient(circle, var(--accent) 0%, transparent 70%);}
 
 nav{
-  position:fixed;top:20px;left:50%;transform:translateX(-50%);
+  position:fixed;top:20px;left:50%;
+  transform:translateX(-50%) translateZ(0);
+  will-change:transform;
   width:90%;max-width:1200px;
   display:flex;justify-content:space-between;align-items:center;
   padding:16px 28px;
@@ -252,6 +258,37 @@ section{padding:120px 8%;scroll-margin-top:110px;}
 .path-item h4{font-family:'Syne',sans-serif;font-weight:600;margin-bottom:6px;font-size:0.98rem;}
 .path-item p{color:var(--muted);line-height:1.7;font-size:0.9rem;}
 
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px;}
+
+.tech-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:18px;padding:28px;transition:0.3s ease;
+}
+.tech-card:hover{background:var(--surface-hover);border-color:var(--border-hover);}
+
+.tech-card h3{
+  font-family:'Syne',sans-serif;font-weight:600;font-size:1.05rem;
+  margin-bottom:18px;color:var(--text);
+  display:flex;align-items:center;gap:10px;
+}
+.tech-card h3::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--accent);flex-shrink:0;
+}
+
+.tech-list{display:flex;flex-wrap:wrap;gap:10px;}
+.tech-list span{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 14px;border-radius:10px;
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--border);
+  color:var(--muted);font-size:0.85rem;
+  transition:0.25s ease;
+}
+.tech-list span:hover{border-color:var(--border-hover);color:var(--text);background:var(--surface-hover);}
+.tech-list i{color:var(--accent);font-size:0.95rem;}
+
 .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:32px;}
 .contact-item{background:var(--surface);border:1px solid var(--border);padding:22px;border-radius:16px;transition:0.25s ease;}
 .contact-item:hover{border-color:var(--border-hover);}
@@ -275,9 +312,12 @@ footer p{color:var(--muted);font-size:0.9rem;}
 }
 
 @media(max-width:700px){
+  html{scroll-behavior:auto;}
   nav ul{display:none;}
+  nav{backdrop-filter:blur(8px);background:rgba(15,16,15,0.8);}
   section{padding:90px 6%;scroll-margin-top:90px;}
   .profile-card{width:100%;}
+  .hero{min-height:100svh;}
 }
 </style>
 </head>
@@ -309,7 +349,7 @@ footer p{color:var(--muted);font-size:0.9rem;}
     <h1>Building <span>full-stack</span> &amp; AI-powered experiences</h1>
 
     <p>
-      B.Sc. Computer Science graduate passionate about building modern full-stack web applications with React, Next.js, Django, and AI. Experienced in creating responsive user interfaces, REST APIs, automation tools, and AI-powered solutions. Currently seeking Software Developer and Full Stack Developer opportunities.
+      B.Sc. Computer Science graduate passionate about building modern full-stack web applications with React, Next.js, Python and AI. Experienced in creating responsive user interfaces, REST APIs, automation tools, and AI-powered solutions. Currently seeking Software Developer and Full Stack Developer opportunities.
     </p>
 
     <div class="hero-buttons">
@@ -325,7 +365,7 @@ footer p{color:var(--muted);font-size:0.9rem;}
         <img src="bbgg.png" alt="Kashish">
       </div>
       <h3>Kashish Sandeep Shimpi</h3>
-      <p>Full-stack developer focused on React, Next.js, Django, and AI integration — building responsive, real-world applications end to end.</p>
+      <p>Full-stack developer focused on React, Next.js, Python and AI integration — building responsive, real-world applications end to end.</p>
       <div class="status-pill">
         <span class="status-dot"></span>
         Available for Full Stack Developer roles
@@ -403,11 +443,7 @@ footer p{color:var(--muted);font-size:0.9rem;}
         <div class="tech-stack">
           <span>Django</span><span>Python</span><span>Playwright</span><span>BeautifulSoup</span><span>Gemini AI</span>
         </div>
-        <div class="project-links">
-          <a href="https://github.com/kashis-h123" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-        </div>
-      </div>
-    </div>
+
 
     <div class="project-card reveal" data-tags="ai python">
       <div class="project-image"><i class="fa-solid fa-eye"></i></div>
@@ -433,11 +469,7 @@ footer p{color:var(--muted);font-size:0.9rem;}
         <div class="tech-stack">
           <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Figma</span>
         </div>
-        <div class="project-links">
-          <a href="https://github.com/kashis-h123" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
-        </div>
-      </div>
-    </div>
+      
 
     <div class="project-card reveal" data-tags="frontend">
       <div class="project-image"><i class="fa-solid fa-utensils"></i></div>
@@ -543,8 +575,10 @@ footer p{color:var(--muted);font-size:0.9rem;}
     <h2>Featured <span>Technologies</span></h2>
   </div>
 
+  <div class="tech-grid">
+
         <!-- Frontend -->
-        <div class="tech-card">
+        <div class="tech-card reveal">
             <h3>Frontend</h3>
 
             <div class="tech-list">
@@ -558,7 +592,7 @@ footer p{color:var(--muted);font-size:0.9rem;}
         </div>
 
         <!-- Backend -->
-        <div class="tech-card">
+        <div class="tech-card reveal">
             <h3>Backend</h3>
 
             <div class="tech-list">
@@ -570,7 +604,7 @@ footer p{color:var(--muted);font-size:0.9rem;}
         </div>
 
         <!-- Database -->
-        <div class="tech-card">
+        <div class="tech-card reveal">
             <h3>Database</h3>
 
             <div class="tech-list">
@@ -581,7 +615,7 @@ footer p{color:var(--muted);font-size:0.9rem;}
         </div>
 
         <!-- AI & Automation -->
-        <div class="tech-card">
+        <div class="tech-card reveal">
             <h3>AI & Automation</h3>
 
             <div class="tech-list">
@@ -594,7 +628,7 @@ footer p{color:var(--muted);font-size:0.9rem;}
         </div>
 
         <!-- Tools -->
-        <div class="tech-card">
+        <div class="tech-card reveal">
             <h3>Tools & Platforms</h3>
 
             <div class="tech-list">
